@@ -10,9 +10,10 @@ use App\Model\Category;
 use Illuminate\Support\Str;
 
 $factory->define(Question::class, function (Faker $faker) {
+    $question = $faker->sentence;
     return [
-        'title' => $faker->sentence,
-        'slung' => Str::slug($faker->sentence),
+        'title' => $question,
+        'slung' => Str::slug($question),
         'body'  => $faker->text,
         'category_id' => function(){
             return Category::all()->random();
