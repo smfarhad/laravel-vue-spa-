@@ -2,8 +2,8 @@
 
 namespace App\Model;
 use App\Question;
-use App\User;
-use App\Like;
+// use App\User;
+// use App\Like;
 
 use Illuminate\Database\Eloquent\Model;
 

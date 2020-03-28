@@ -4,8 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Reply;
-use App\Category;
+// use App\Reply;
+// use App\Category;
 class Question extends Model
 {
     public function user(){
