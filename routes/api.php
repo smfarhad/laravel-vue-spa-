@@ -24,3 +24,18 @@ Route::apiResource('/question/{question}/reply', 'ReplyController');
 
 Route::post('/like/{reply}', 'LikeController@likeIt');
 Route::delete('/like/{reply}', 'LikeController@unLikeIt');
+
+
+Route::post('/auth/login', 'API\AuthController@login');
+Route::post('/auth/register', 'API\AuthController@register');
+
+Route::group([
+    'middleware' => 'jwt',
+    'prefix' => 'auth'
+], function ($router) {
+
+
+    Route::post('logout', 'API\AuthController@logout');
+    Route::post('refresh', 'API\AuthController@refresh');
+    Route::post('me', 'API\AuthController@me');
+});

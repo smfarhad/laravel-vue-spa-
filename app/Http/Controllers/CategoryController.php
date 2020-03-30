@@ -11,6 +11,15 @@ use Illuminate\Http\Response;
 class CategoryController extends Controller
 {
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['index', 'show']]);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -76,6 +85,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
         $category->name = $request->name;
         $category->slung = Str::slug($request->name);
         $category->save();
