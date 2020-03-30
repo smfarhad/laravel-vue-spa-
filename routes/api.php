@@ -24,6 +24,7 @@ Route::apiResource('/question/{question}/reply', 'ReplyController');
 
 Route::post('/like/{reply}', 'LikeController@likeIt');
 Route::delete('/like/{reply}', 'LikeController@unLikeIt');
+<<<<<<< HEAD
 
 
 Route::post('/auth/login', 'API\AuthController@login');
@@ -39,3 +40,5 @@ Route::group([
     Route::post('refresh', 'API\AuthController@refresh');
     Route::post('me', 'API\AuthController@me');
 });
+=======
+>>>>>>> cd4b60820d37c89c33eb4014ef9f362d4b1306b6

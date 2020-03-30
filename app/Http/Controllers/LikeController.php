@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+
     /**
      * Create a new AuthController instance.
      *
@@ -17,7 +18,6 @@ class LikeController extends Controller
     {
         $this->middleware('jwt');
     }
-
     /**
      * Store a newly created resource in storage.
      *
