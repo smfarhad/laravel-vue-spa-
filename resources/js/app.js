@@ -33,11 +33,7 @@ Vue.use(Vuetify)
 
 Vue.component('app-home', require('./components/AppHome.vue').default);
 
-
-// Vue router setup 
-import VueRouter from 'vue-router';
-
-// import router definition file form apps
+// Vue Router file 
 import router from './Router/router.js';
 
 /**
@@ -45,12 +41,9 @@ import router from './Router/router.js';
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-new Vue({
+
+const app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
-});
-
-// whole app router-aware.
-const app = new Vue({
     router
-}).$mount('#app');
+});
