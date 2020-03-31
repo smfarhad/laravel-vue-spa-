@@ -17,7 +17,7 @@ export default {
       form: {
         name: null,
         email: null,
-        password: null
+        password: null,
         password_confirmation: null
       }
     };
