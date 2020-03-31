@@ -4,6 +4,9 @@
       <v-text-field type="email" v-model="form.email" label="E-mail" required></v-text-field>
       <v-text-field type="password" v-model="form.password" label="Password" required></v-text-field>
       <v-btn type="submit" color="primary">Login</v-btn>
+      <router-link to="/signup">
+        <v-btn text small color="green">Sign Up</v-btn>
+      </router-link>
     </v-form>
   </v-container>
 </template>
@@ -21,10 +24,6 @@ export default {
   methods: {
     login() {
       User.login(this.form);
-      axios
-        .post("/api/auth/login", this.form)
-        .then(res => console.log(res.data))
-        .catch(error => console.log(error.response.data));
     }
   }
 };
