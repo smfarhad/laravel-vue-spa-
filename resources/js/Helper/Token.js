@@ -4,7 +4,7 @@ class Token {
         const payload = this.payload(token);
 
         if (payload) {
-            if (payload.iss == "http://127.0.0.1:8000/api/auth/login") {
+            if (payload.iss == "http://127.0.0.1:8000/api/auth/login" || payload.iss == "http://127.0.0.1:8000/api/auth/register") {
                 return true;
             } else {
                 return false;
@@ -13,7 +13,6 @@ class Token {
         }
         return false;
     }
-
     payload(token) {
         const payload = token.split('.')[1];
         return this.decode(payload);

@@ -41,8 +41,8 @@ import router from './Router/router.js';
 import User from './Helper/User';
 window.User = User;
 
-//console.log(User.loggedIn());
-//console.log(User.logOut());
+window.EventBus = new Vue();
+
 console.log('ID : ' + User.id());
 /**
  * Next, we will create a fresh Vue application instance and attach it to

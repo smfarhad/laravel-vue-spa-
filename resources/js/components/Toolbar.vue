@@ -6,20 +6,31 @@
       <v-toolbar-title>Title</v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <router-link to="/forum">
-        <v-btn text small>Forum</v-btn>
-      </router-link>
 
-      <v-btn text small>Ask Question</v-btn>
-      <v-btn text small>Catrgory</v-btn>
-
-      <router-link to="/login">
-        <v-btn text small>Login</v-btn>
+      <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show">
+        <v-btn text small>{{item.title}}</v-btn>
       </router-link>
     </v-toolbar>
   </v-card>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      items: [
+        { title: "Forum", to: "/forum", show: true },
+        { title: "Ask Question", to: "/ask", show: User.loggedIn() },
+        { title: "Category", to: "/category", show: User.loggedIn() },
+        { title: "Login", to: "/login", show: !User.loggedIn() },
+        { title: "Logout", to: "/logout", show: User.loggedIn() }
+      ]
+    };
+  },
+  created() {
+    EventBus.$on("logout", () => {
+      User.logOut();
+    });
+  }
+};
 </script>
 <style></style>
