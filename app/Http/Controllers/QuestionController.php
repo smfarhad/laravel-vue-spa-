@@ -6,6 +6,7 @@ use App\Model\Question;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\QuestionResource;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -46,10 +47,8 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
-        //auth()->user()->question()->create($request->all());
-        Question::create($request->all());
-        return response('Created', Response::HTTP_CREATED);
+        $question = auth()->user()->question()->create($request->all());
+        return response(new QuestionResource($question), Response::HTTP_CREATED);
     }
 
     /**

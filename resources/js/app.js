@@ -3,18 +3,29 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-//require('./ES6.js');
+
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+
 
 
 // src/plugins/vuetify.js
-import Vue from 'vue';
+
+window.Vue = require('vue');
+
 import Vuetify from 'vuetify';
 
+import '@fortawesome/fontawesome-free/css/all.css';
 
-Vue.use(Vuetify)
+// simplemde mark down editor test editor 
+import VueSimplemde from 'vue-simplemde';
+
+// markdown VueSimple mde
+import md from "marked";
+window.md = md;
+
+Vue.use(Vuetify);
 
 //const opts = {}
 
@@ -43,7 +54,7 @@ window.User = User;
 
 window.EventBus = new Vue();
 
-console.log('ID : ' + User.id());
+// console.log('ID : ' + User.id());
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -52,6 +63,10 @@ console.log('ID : ' + User.id());
 
 const app = new Vue({
     el: '#app',
-    vuetify: new Vuetify(),
+    vuetify: new Vuetify({
+        icons: {
+            iconfont: 'fa',
+        },
+    }),
     router
 });
