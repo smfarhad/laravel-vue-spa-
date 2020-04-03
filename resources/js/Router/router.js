@@ -6,7 +6,9 @@ Vue.use(VueRouter);
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Signup from '../components/auth/Signup';
-import Forum from '../components/Forum';
+import Forum from '../components/forum/Forum';
+import ReadQuestion from '../components/forum/ReadQuestion';
+import CreateQuestion from '../components/forum/CreateQuestion';
 
 const routes = [{
         path: '/login',
@@ -21,6 +23,13 @@ const routes = [{
         path: '/forum',
         component: Forum,
         name: 'forum'
+    }, {
+        path: '/question/:slung',
+        component: ReadQuestion,
+        name: 'ReadQuestion'
+    }, {
+        path: '/ask',
+        component: CreateQuestion,
     }
 
 ];

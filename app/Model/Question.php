@@ -4,14 +4,23 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-
+use Illuminate\Support\Str;
 // use App\Reply;
 // use App\Category;
 class Question extends Model
 {
     //protected $fillable = ['title','slung', 'body', 'category_id', 'user_id'];
 
-    protected $guarded = [];
+    //protected $guarded = [];
+    protected $fillable = ['title', 'slung', 'body', 'category_id', 'user_id'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($question) {
+            $question->slung = Str::slug($question->title);
+        });
+    }
 
     public function getRouteKeyName()
     {
@@ -31,6 +40,6 @@ class Question extends Model
     }
     public function getPathAttribute()
     {
-        return asset("api/question/$this->slung");
+        return "/question/$this->slung";
     }
 }
