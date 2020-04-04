@@ -52,7 +52,13 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slung = Str::slug($request->name);
         $category->save();
-        return response('Created', Response::HTTP_CREATED);
+
+        return response([
+            'status' => 'success',
+            'category_name' => $category->name,
+            'status_code' => Response::HTTP_CREATED,
+            'message' => $category->name . ' inserted successfully!'
+        ], Response::HTTP_CREATED,);
     }
 
     /**
@@ -85,11 +91,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-
         $category->name = $request->name;
         $category->slung = Str::slug($request->name);
         $category->save();
-        return response('Updates', Response::HTTP_OK);
+        return response(new CategoryResource($category), Response::HTTP_OK);
     }
 
     /**
@@ -101,6 +106,11 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return response('Deleted', Response::HTTP_MOVED_PERMANENTLY);
+        // return response()->json(['message' => 'task was successful'], Response::HTTP_MOVED_PERMANENTLY);
+        return response([
+            'status' => 'success',
+            'status_code' => Response::HTTP_MOVED_PERMANENTLY,
+            'message' => $category->name . ' deleted successfully!'
+        ], Response::HTTP_MOVED_PERMANENTLY);
     }
 }

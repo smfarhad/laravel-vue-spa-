@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card>
+    <v-card mt-2>
       <v-card-title>
         <div class="headline">{{data.title}}</div>
         <v-spacer></v-spacer>

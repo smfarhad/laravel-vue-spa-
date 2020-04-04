@@ -10,6 +10,9 @@ import Forum from '../components/forum/Forum';
 import ReadQuestion from '../components/forum/ReadQuestion';
 import CreateQuestion from '../components/forum/CreateQuestion';
 
+import CreateCateory from '../components/category/Create';
+
+
 const routes = [{
         path: '/login',
         component: Login
@@ -30,6 +33,9 @@ const routes = [{
     }, {
         path: '/ask',
         component: CreateQuestion,
+    }, {
+        path: '/category',
+        component: CreateCateory,
     }
 
 ];

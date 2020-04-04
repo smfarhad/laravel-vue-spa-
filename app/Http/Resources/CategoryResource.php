@@ -16,6 +16,7 @@ class CategoryResource extends JsonResource
     {
         return [
             'name' => $this->name,
+            'slung' => $this->slung,
             'id' => $this->id,
         ];
     }
