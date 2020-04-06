@@ -19,7 +19,7 @@
       </v-card>
     </v-form>
 
-    <v-card class="mx-auto">
+    <v-card>
       <v-toolbar color="primary darken-4" dark>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-toolbar-title>Category</v-toolbar-title>
@@ -31,7 +31,7 @@
             <thead>
               <tr>
                 <th class="text-left">Name</th>
-                <th class="text-left">Actions</th>
+                <th class="text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -51,13 +51,6 @@
         </v-simple-table>
       </v-card-text>
     </v-card>
-  </v-container>
-</template>
-    </v-simple-table>
-  </v-container>
-</template>
-
-
   </v-container>
 </template>
 <script>

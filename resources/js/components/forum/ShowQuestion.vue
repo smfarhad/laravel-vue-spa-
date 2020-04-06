@@ -4,7 +4,7 @@
       <v-card-title>
         <div class="headline">{{data.title}}</div>
         <v-spacer></v-spacer>
-        <v-btn>5 Replies</v-btn>
+        <v-btn color="red" dark>{{data.num_of_reply}} Replies</v-btn>
       </v-card-title>
       <v-card-subtitle>{{data.user }} | {{data.created_at}}</v-card-subtitle>
       <v-card-text class="text--primary">
