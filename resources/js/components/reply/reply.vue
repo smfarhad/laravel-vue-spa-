@@ -7,7 +7,10 @@
           <v-list-item-title>
             {{data.user}} -
             <span class="caption">{{data.created_at}}</span>
+            <like class="float-right" :content="data"></like>
           </v-list-item-title>
+          <v-spacer></v-spacer>
+
           <v-divider></v-divider>
           <v-list-item-subtitle v-html="data.reply"></v-list-item-subtitle>
         </v-list-item-content>
@@ -28,8 +31,9 @@
 </template>
 <script>
 import EditReply from "./editReply";
+import Like from "../likes/like";
 export default {
-  components: { EditReply },
+  components: { EditReply, Like },
   props: ["data", "index"],
   data() {
     return {
@@ -38,6 +42,7 @@ export default {
     };
   },
   created() {
+    //console.log(this.data.like_count);
     this.listen();
   },
   computed: {
@@ -57,9 +62,10 @@ export default {
     listen() {
       EventBus.$on("cancelEditing", reply => {
         this.editing = false;
-        if (reply !== this.data.reply) {
+        if (this.data.reply == this.beforeEditReplyBody) {
           this.data.reply = reply;
         }
+        window.scrollTo(0, 0);
       });
     }
   }

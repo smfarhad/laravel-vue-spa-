@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-form @submit.prevent="update">
+    <v-form @submit.prevent>
       <v-card>
         <v-toolbar flat>
           <v-icon>fas fa-question &nbsp;</v-icon>
@@ -39,6 +39,9 @@ export default {
   },
   computed: {},
   methods: {
+    cancel(reply) {
+      EventBus.$emit("cancelEditing", reply);
+    },
     update() {
       axios
         .patch(
@@ -46,10 +49,6 @@ export default {
           { body: this.form.body }
         )
         .then(res => this.cancel(this.form.body));
-    },
-
-    cancel(reply) {
-      EventBus.$emit("cancelEditing", reply);
     }
   }
 };
