@@ -13,6 +13,13 @@ export default {
       count: this.content.like_count
     };
   },
+  created() {
+    Echo.channel("likeChannel").listen("LikeEvent", e => {
+      if (this.content.id == e.id) {
+        e.type == 1 ? this.count++ : this.count--;
+      }
+    });
+  },
   computed: {
     likeColor() {
       return this.liked ? "red" : "red lighten-4 ";

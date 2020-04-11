@@ -18,6 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\LikeEvent' => [
+            'App\Listerers\LikeEventListner'
+        ],
+        'App\Events\DeleteReplyEvent' => [
+            'App\Listerers\DeleteReplyEventListner'
+        ],
     ];
 
     /**

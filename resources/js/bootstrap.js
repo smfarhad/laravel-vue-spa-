@@ -23,7 +23,7 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-const JWTtoken = `Bearer ${localStorage.getItem('token')}`;
+var JWTtoken = `Bearer ${localStorage.getItem('token')}`;
 
 window.axios.defaults.headers.common['Authorization'] = JWTtoken;
 
@@ -33,13 +33,18 @@ window.axios.defaults.headers.common['Authorization'] = JWTtoken;
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: "51a247d3c675a8573ff8", // process.env.MIX_PUSHER_APP_KEY,
+    cluster: "ap2", //process.env.MIX_PUSHER_APP_CLUSTER,
+    encrypted: true,
+    auth: {
+        headers: {
+            Authorization: JWTtoken
+        }
+    }
+});

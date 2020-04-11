@@ -35,8 +35,12 @@ export default {
   created() {
     if (User.loggedIn()) {
       this.getNotificitions();
-      // console.log(this.unReadCount);
     }
+    Echo.private("App.User." + User.id()).notification(notification => {
+      //this.playSound();
+      this.unRead.unshift(notification);
+      this.unReadCount++;
+    });
   },
   computed: {
     color() {
