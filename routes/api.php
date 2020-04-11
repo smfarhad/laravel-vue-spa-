@@ -1,6 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,9 @@ Route::delete('/like/{reply}', 'LikeController@unLikeIt');
 
 Route::post('/auth/login', 'API\AuthController@login');
 Route::post('/auth/register', 'API\AuthController@register');
+
+Route::post('/notifications', 'NotificationController@index');
+Route::post('/markAsRead', 'NotificationController@markAsRead');
 
 Route::group([
     'middleware' => 'jwt',

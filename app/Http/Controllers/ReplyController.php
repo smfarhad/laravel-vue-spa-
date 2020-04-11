@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReplyResource;
 use App\Model\Reply;
 use App\Model\Question;
+use App\Notifications\NewReplyNotification;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ReplyController extends Controller
 {
@@ -49,6 +52,10 @@ class ReplyController extends Controller
     public function store(Question $question, Request $request)
     {
         $reply = $question->replies()->create($request->all());
+        $user = $question->user;
+        //if ($reply->user_id !== $question->user_id) {
+        $user->notify(new NewReplyNotification($reply));
+        //}
         return response(['reply' => new ReplyResource($reply)], Response::HTTP_CREATED);
     }
 
@@ -104,3 +111,7 @@ class ReplyController extends Controller
         return response('Deleted', Response::HTTP_MOVED_PERMANENTLY);
     }
 }
+
+
+// Route::post('/notifications', function () {
+// });

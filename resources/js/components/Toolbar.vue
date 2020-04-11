@@ -3,9 +3,10 @@
     <v-toolbar dense>
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>SPA</v-toolbar-title>
 
       <v-spacer></v-spacer>
+      <app-notification v-if="loggedIn"></app-notification>
 
       <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show">
         <v-btn text small>{{item.title}}</v-btn>
@@ -14,9 +15,12 @@
   </v-card>
 </template>
 <script>
+import AppNotification from "./AppNotification";
 export default {
+  components: { AppNotification },
   data() {
     return {
+      loggedIn: User.loggedIn(),
       items: [
         { title: "Forum", to: "/forum", show: true },
         { title: "Ask Question", to: "/ask", show: User.loggedIn() },
