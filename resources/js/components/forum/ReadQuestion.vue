@@ -26,7 +26,11 @@ export default {
     this.listen();
     this.getQuestion();
   },
-  computed: {},
+  computed: {
+    loggedIn() {
+      return User.loggedIn();
+    }
+  },
   methods: {
     listen() {
       EventBus.$on("startEditing", () => {

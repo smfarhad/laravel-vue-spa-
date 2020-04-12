@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-form @submit.prevent="createReply">
+    <v-form v-if="loggedIn" @submit.prevent="createReply">
       <v-card>
         <v-toolbar flat>
           <v-icon>fas fa-question &nbsp;</v-icon>
@@ -18,6 +18,9 @@
         </v-card-actions>
       </v-card>
     </v-form>
+    <div v-else>
+      <router-link to="/login">Login in to Reply</router-link>
+    </div>
   </v-container>
 </template>
 <script>
@@ -36,7 +39,11 @@ export default {
   components: {
     VueSimplemde
   },
-
+  computed: {
+    loggedIn() {
+      return User.loggedIn();
+    }
+  },
   methods: {
     createReply() {
       axios

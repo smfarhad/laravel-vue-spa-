@@ -25,6 +25,11 @@ import VueSimplemde from 'vue-simplemde';
 import md from "marked";
 window.md = md;
 
+
+import Exception from './Helper/Exception';
+window.Exception = Exception;
+
+
 Vue.use(Vuetify);
 
 //const opts = {}

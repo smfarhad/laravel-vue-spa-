@@ -3,8 +3,7 @@
     <v-card-title>
       <router-link :to="data.path">{{data.title}}</router-link>
     </v-card-title>
-    <v-card-subtitle class="pb-0">{{data.user }} | {{data.created_at}}</v-card-subtitle>
-
+    <v-card-subtitle class="pb-0">{{data.user}} | {{data.created_at}}</v-card-subtitle>
     <v-card-text class="text--primary">
       <div v-html="body"></div>
     </v-card-text>

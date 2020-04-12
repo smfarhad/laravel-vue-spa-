@@ -2,7 +2,7 @@
   <v-container>
     <div>
       <v-card class="mx-auto" outlined>
-        <reply v-for="(reply, index) in content" :key="reply.id" :index="index" :data="reply"></reply>
+        <reply v-for="(reply, index) in content" :key="index" :index="index" :data="reply"></reply>
       </v-card>
     </div>
   </v-container>

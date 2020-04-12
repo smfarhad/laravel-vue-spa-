@@ -5,7 +5,7 @@
         <v-list-item-content>
           <div class="overline mb-4"></div>
           <v-list-item-title>
-            {{data.user}} -
+            AAA {{data.user}} -
             <span class="caption">{{data.created_at}}</span>
             <like class="float-right" :content="data"></like>
           </v-list-item-title>
