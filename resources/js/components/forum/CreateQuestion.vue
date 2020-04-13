@@ -8,7 +8,9 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-card-text>
+          <span class="red--text" v-if="errors.title">{{ errors.title[0] }}</span>
           <v-text-field type="text" v-model="form.title" label="Title" required></v-text-field>
+          <span class="red--text" v-if="errors.category_id">{{ errors.category_id[0] }}</span>
           <v-autocomplete
             v-model="form.category_id"
             :items="categories"
@@ -17,12 +19,13 @@
             label="Category"
           ></v-autocomplete>
           <!-- use v-model control value -->
+          <span class="red--text" v-if="errors.body">{{ errors.body[0] }}</span>
           <vue-simplemde v-model="form.body" ref="markdownEditor" />
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn type="submit" color="success">Create</v-btn>
+          <v-btn type="submit" color="success" :disabled="createDisable">Create</v-btn>
         </v-card-actions>
       </v-card>
     </v-form>
@@ -48,13 +51,17 @@ export default {
   created() {
     axios.get("/api/category").then(res => (this.categories = res.data.data));
   },
-
+  computed: {
+    createDisable() {
+      return !(this.form.title && this.form.category_id && this.form.body);
+    }
+  },
   methods: {
     createQuestion() {
       axios
         .post("/api/question", this.form)
         .then(res => this.$router.push(res.data.path))
-        .catch(error => (this.errors = error.response.data.error));
+        .catch(error => (this.errors = error.response.data.errors));
     }
   }
 };

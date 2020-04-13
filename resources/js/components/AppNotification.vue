@@ -37,7 +37,7 @@ export default {
       this.getNotificitions();
     }
     Echo.private("App.User." + User.id()).notification(notification => {
-      //this.playSound();
+      this.playSound();
       this.unRead.unshift(notification);
       this.unReadCount++;
     });
@@ -48,6 +48,10 @@ export default {
     }
   },
   methods: {
+    playSound() {
+      let alert = new Audio(this.sound);
+      alert.play();
+    },
     getNotificitions() {
       axios
         .post("/api/notifications")

@@ -1,5 +1,7 @@
 <template>
   <v-container>
+    <v-alert v-if="errors" type="error" :value="true">Please give category name.</v-alert>
+
     <v-form @submit.prevent="createCategory">
       <v-card>
         <v-toolbar flat>
@@ -63,7 +65,7 @@ export default {
       },
       response: null,
       categories: {},
-      errors: {},
+      errors: false,
       editSlung: false
     };
   },

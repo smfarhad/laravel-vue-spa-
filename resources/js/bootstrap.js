@@ -39,12 +39,15 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: "51a247d3c675a8573ff8", // process.env.MIX_PUSHER_APP_KEY,
-    cluster: "ap2", //process.env.MIX_PUSHER_APP_CLUSTER,
-    encrypted: true,
+    key: "myKey", //key: "51a247d3c675a8573ff8", // process.env.MIX_PUSHER_APP_KEY,
+    //cluster: "ap2", //process.env.MIX_PUSHER_APP_CLUSTER,
+    //encrypted: true,
+    wsHost: window.location.hostname,
+    wsPort: 6001,
+    disableStats: true,
     auth: {
         headers: {
             Authorization: JWTtoken
         }
-    }
+    },
 });

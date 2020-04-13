@@ -1,9 +1,11 @@
 <template>
-  <v-card color="grey lighten-4" flat height tile>
-    <v-toolbar dense>
+  <v-card color="indigo lighten-4" flat height tile>
+    <v-toolbar color="indigo" dense dark>
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title>SPA</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link class="white--text" to="/">SPA</router-link>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <app-notification v-if="loggedIn"></app-notification>
